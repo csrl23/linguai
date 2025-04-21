@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", serif; 
+}
+
+.container {
+  display: flex; 
+  flex-direction: row;
+}
+
+.left-container {
+  background: radial-gradient(#c875fc, #f5e8fc);
+  width: 60%; 
+  height: 100vh; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-container {
+  border-radius: 7px;
+  background: rgba(251, 244, 255, 0.70);
+  width: 90%;
+  height: 90%;
+  position: relative;
+}
+
+.lottie-container {
+  height: 70%; 
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.right-container {
+  background-color: #FBF4FF;
+  width: 40%; 
+  height: 100vh; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  color: #434242; 
+}
+
+.top-right-container {
+  position: absolute;
+  top: 15%; 
+}
+
+.top-right-container-signup {
+  position: absolute;
+  top: 13%; 
+}
+
+.welcome-portion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin: 15px 5px; 
+}
+
+.welcome, .sign-in-p, .name-p, .email-p, .password-p, .support-area, .or-p, .no-account-p, .copyright-p {
+  font-weight: 250;
+}
+
+.welcome {
+  font-size: 22px;
+  padding: 0px 0px 7px 0px; 
+}
+
+.email-p, .password-p, .name-p {
+  font-size: 16px;
+}
+
+.names {
+  display: flex;
+
+}
+
+.first-name-input, .last-name-input {
+  border: 1px solid #C9C9C9; 
+  border-radius: 5px; 
+
+  height: 30px; 
+  padding: 10px 10px; 
+}
+
+.first-name-input {
+  width: 110px; 
+  margin: 0px 2px 0px 0px;
+}
+
+.last-name-input {
+  width: 176px; 
+  margin: 0px 0px 0px 3px;
+}
+
+.sign-in-p {
+  font-size: 15px;
+}
+
+.input-portion {
+  display: flex; 
+  flex-direction: column;
+  width: 293px; 
+  padding: 25px 0px; 
+}
+
+.email-area, .password-area, .name-area {
+  margin: 8px 0px; 
+}
+
+.input, .sign-in-button, .google-sign-in-button {
+  border: 1px solid #C9C9C9; 
+  border-radius: 5px; 
+  width: 291px; 
+  height: 30px; 
+  padding: 10px 10px; 
+}
+
+.password-p, .email-p, .name-p {
+  padding: 5px 0px; 
+}
+
+.support-area {
+  display: flex; 
+  justify-content: space-between;
+  padding: 4px 0px 5px 0px; 
+}
+
+.button-portion {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-button, .google-sign-in-button {
+  padding: 0px 0px; 
+  color: #FFFFFF; 
+}
+
+.sign-in-button {
+  margin: 0px 0px 11px 0px; 
+  border-radius: 7px;
+  border: 1px solid #E5B9FF;
+  background: linear-gradient(90deg, #E0ACFF 0%, #EDCEFF 52%, #F5E4FF 100%);
+}
+
+.sign-in-button:hover, .google-sign-in-button:hover {
+  scale: 1.02; 
+}
+
+.google-sign-in-button {
+  margin: 11px 0px 12px 0px; 
+  border-radius: 7px;
+  border: 1px solid #7B7A7A;
+  background: linear-gradient(90deg, #868484 0%, #7B7A7A 43%, #C9C9C9 100%);
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+.google-sign-in-p {
+  padding: 0px 0px 0px 7px; 
+}
+
+.forgot-pw, .no-account-p {
+  font-size: 14px;
+}
+
+.or-p {
+  font-size: 13px;
+}
+
+.copyright-portion {
+  position: fixed; 
+  bottom: 0; 
+  padding: 23px 0px; 
+}
+
+.no-account-span {
+  color: #C96CFF; 
+}
+
+.no-account-span:hover {
+  color: #e3b1ff; 
+}
+
+.forgot-pw:hover {
+  color: #cb72ff;  
+}

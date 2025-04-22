@@ -5,7 +5,9 @@ import '../styles/dashboard.css';
 const Home = () => {
   
   return (
-
+    <div>
+      
+    </div>
   ); 
 };  
 

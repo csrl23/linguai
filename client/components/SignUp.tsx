@@ -27,7 +27,7 @@ const SignUp = () => {
       </div>
       <div className='right-container'>
 
-        <div className='top-right-container-signup'>
+        <div className='top-right-container'>
         <div className='welcome-portion'>
           <h1 className='logo'>
             <img src={logo} alt='Linguai Logo' style={{height:60, width:210}}></img>

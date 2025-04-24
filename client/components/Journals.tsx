@@ -6,9 +6,10 @@ import '../styles/journals.css';
 
 const Journals: React.FC = () => {
   const [newJournalWindow, setNewJournalWindow] = useState<boolean>(false); 
+  const [journals, setJournals] = useState<string[]>([]); 
 
   useEffect(() => {
-    if(newJournalWindow) {
+    if(journals) {
     //   return (
     //     // <>
     //     // <div className='new-journal-window'>
@@ -17,7 +18,12 @@ const Journals: React.FC = () => {
     //     // </>
     //   )
     }
-  }, [newJournalWindow])
+  }, [journals])
+
+
+  const handlePopupState = (newState: boolean) => {
+    setNewJournalWindow(newState); 
+  };
 
   const createJournal = () => {
     // return (
@@ -41,26 +47,10 @@ const Journals: React.FC = () => {
       </header>
       <main className='dashboard'>
         <section className='journals-section'>
-          <h1 className='section-title'>Language Journals</h1>
+          <h1 className='section-title'>Journals</h1>
           <div className='section-list'>
             <button className='add-journal-btn' onClick={() => setNewJournalWindow(true)}>+ New Journal</button>
-            {newJournalWindow && <Popup></Popup>}
-            {/* {newJournalWindow && (
-              <section className='new-journal-window'>
-                <div className='window-container'>
-                  <div className='upper-container'>
-                    <h1>Select a language:</h1>
-                  </div>
-                  <div className='middle-container'>
-                    <h3>or</h3>
-                  </div>
-                  <div className='lower-container'>
-                    <h1>Set your own:</h1>
-                  </div>
-                </div>
-                <button onClick={createJournal}>Create Journal</button>
-              </section>
-            )} */}
+            {newJournalWindow && <Popup onPopupStateChange={handlePopupState}></Popup>}
           </div>
         </section>
       </main>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/journals.css'; 
 
-
+// interface for properties in the selected language object
 interface DropdownLang {
   key: number,
   language: string, 
@@ -9,13 +9,19 @@ interface DropdownLang {
   journalName: string,
 }
 
+// interface for props being passed down from the parent popup component
 interface ChildProps {
+  // prop to update dropdown state 
   onDropdownStateChange: (newState: boolean) => void; 
+  // prop to update selected language state 
+  onSelectedLangStateChange: (newState: string) => void; 
 }
 
-const LangDropdown: React.FC<ChildProps> = ({ onDropdownStateChange }) => {
+const LangDropdown: React.FC<ChildProps> = ({ onDropdownStateChange, onSelectedLangStateChange }) => {
+  
   const [chosenLanguage, setChosenLanguage] = useState<string>(''); 
 
+  // preset language title combos to map when dropdown is opened
   const languages = [
     {key: 1, language: ' French', emoji: '🇫🇷', journalName: ' Français'},
     {key: 2, language: ' Korean', emoji: '🇰🇷', journalName: ' 한국어'},
@@ -39,10 +45,12 @@ const LangDropdown: React.FC<ChildProps> = ({ onDropdownStateChange }) => {
     {key: 20, language: ' Norwegian', emoji: '🇳🇴', journalName: ' Norsk'}
   ]
   
-  // function to update the 
+  // function to update state of dropdown component and selected language in parent popup component
   const handleChange = (chosenLanguage: DropdownLang) : void => {
+    // set up name of journal (emoji + native language name)
     const finalLanguageLabel: string = `${chosenLanguage.emoji}${chosenLanguage.journalName}`; 
-    setChosenLanguage(finalLanguageLabel); 
+    // console.log(finalLanguageLabel);
+    onSelectedLangStateChange(finalLanguageLabel); 
     onDropdownStateChange(false); 
   }
 

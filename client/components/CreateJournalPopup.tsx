@@ -54,6 +54,8 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange }) => {
 
       // reset state 
 
+      // close popup component
+      onPopupStateChange(false); 
     }
   };
 

@@ -6,7 +6,7 @@ import '../styles/journals.css';
 
 const Journals: React.FC = () => {
   const [newJournalWindow, setNewJournalWindow] = useState<boolean>(false); 
-  const [journals, setJournals] = useState<string[]>([]); 
+  const [journals, setJournals] = useState<string[]>(['🇫🇷 Français', '🇪🇸 Español', '🇰🇷 한국어', '🇨🇳 普通话', '🇮🇹 Italiano', '🇯🇵 日本語']); 
 
   useEffect(() => {
     if(journals) {
@@ -33,6 +33,8 @@ const Journals: React.FC = () => {
     // )
   }
 
+  
+
   return (
     <div className='dashboard-container'>
       <header className='navbar'>
@@ -49,6 +51,13 @@ const Journals: React.FC = () => {
         <section className='journals-section'>
           <h1 className='section-title'>Journals</h1>
           <div className='section-list'>
+            <ul className='journal-container'>
+              {journals.map((journal:string) => (
+                <li className='journal' >
+                  {journal}
+                </li>
+              ))}
+            </ul>
             <button className='add-journal-btn' onClick={() => setNewJournalWindow(true)}>+ New Journal</button>
             {newJournalWindow && <Popup onPopupStateChange={handlePopupState}></Popup>}
           </div>

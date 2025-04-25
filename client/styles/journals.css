@@ -1,3 +1,4 @@
+/* journal component */
 .journals-section {
   display: flex;
   flex-direction: column;
@@ -29,22 +30,49 @@
   width: 100%; 
 }
   
-.add-journal-btn {
+.add-journal-btn, .journal {
   height: 50px; 
-  width: 350px; 
-  color: #D181FF; 
+  width: 375px; 
   font-weight: 350;
   font-size: 18px;
-  background: rgba(226, 202, 240, 0.29);
   border: 1px solid #E0ACFF; 
   border-radius: 6.5px;
+}  
+  
+.add-journal-btn {
+  color: #D181FF; 
+  background: rgba(226, 202, 240, 0.29);
 }
-  
-  
+
 .add-journal-btn:hover {
   scale: 1.02; 
 }
 
+.journal {
+  background: rgba(224, 172, 255, 0.29);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+.journal:hover {
+  background: rgba(199, 101, 255, 0.29);
+}
+
+.journal-container {
+  overflow: auto;
+  max-height: 370px; 
+  /* border: 1px solid red;  */
+}
+
+.journal-container::-webkit-scrollbar {
+  /* display: none; */
+  /* color: rgba(219, 70, 25, 0.93); */
+}
+
+
+/* popup component */
 .new-journal-window {
   display: flex; 
   flex-direction: column;
@@ -118,42 +146,11 @@
 }
 
 .upper-container {
-    position: relative;
-  }
+  position: relative;
+}
 
 .upper-h1, .middle-h3, .lower-h1 {
   font-weight: 300;
-}
-
-.dropdown-container {
-  height: 100%; 
-  width: 81.75%; 
-  position: absolute;
-  top: 86%; 
-  left: 0;
-}
-
-.dropdown {
-  list-style-type: none;
-  text-align: center;
-  border-radius: 9px;
-  border: 1px solid #E0ACFF;
-  background: rgb(251, 244, 255);
-  overflow: auto;
-  max-height: 180px; 
-}
-
-.dropdown-item {
-  padding: 4px 0px 4px 0px;
-  border-radius: 9px;
-  border-bottom: 0.5px solid #e7c4fb; 
-  border-top: 0.5px solid #e7c4fb; 
-  
-}
-
-.dropdown-item:hover {
-  background: #F0D6FF;
-  border-radius: 6.5px;
 }
 
 .language-btn, .language-input {
@@ -181,7 +178,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .middle-container {
@@ -195,4 +191,36 @@
   width: 10rem; 
   margin: 0px 10px; 
   border: 0.2px solid #D181FF;
+}
+
+
+/* dropdown component */
+.dropdown-container {
+  height: 100%; 
+  width: 81.75%; 
+  position: absolute;
+  top: 86%; 
+  left: 0;
+}
+  
+.dropdown {
+  list-style-type: none;
+  text-align: center;
+  border-radius: 9px;
+  border: 1px solid #E0ACFF;
+  background: rgb(251, 244, 255);
+  overflow: auto;
+  max-height: 180px; 
+}
+  
+.dropdown-item {
+  padding: 4px 0px 4px 0px;
+  border-radius: 9px;
+  border-bottom: 0.5px solid #e7c4fb; 
+  border-top: 0.5px solid #e7c4fb; 
+}
+  
+.dropdown-item:hover {
+  background: #F0D6FF;
+  border-radius: 6.5px;
 }

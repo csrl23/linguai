@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/journals.css'; 
+import '../../styles/journals.css'; 
 
 // interface for properties in the selected language object
 interface DropdownLang {
@@ -7,19 +7,25 @@ interface DropdownLang {
   language: string, 
   emoji: string, 
   journalName: string,
-}
+};
+
+// interface for properties in the journal object
+interface Journal {
+  key: string,
+  journalName: string, 
+};
 
 // interface for props being passed down from the parent popup component
 interface ChildProps {
   // prop to update dropdown state 
   onDropdownStateChange: (newState: boolean) => void; 
   // prop to update selected language state 
-  onSelectedLangStateChange: (newState: string) => void; 
-}
+  onSelectedLangStateChange: (newState: Journal) => void; 
+};
 
 const LangDropdown: React.FC<ChildProps> = ({ onDropdownStateChange, onSelectedLangStateChange }) => {
   
-  const [chosenLanguage, setChosenLanguage] = useState<string>(''); 
+  // const [chosenLanguage, setChosenLanguage] = useState<string>(''); 
 
   // preset language title combos to map when dropdown is opened
   const languages = [
@@ -50,7 +56,16 @@ const LangDropdown: React.FC<ChildProps> = ({ onDropdownStateChange, onSelectedL
     // set up name of journal (emoji + native language name)
     const finalLanguageLabel: string = `${chosenLanguage.emoji}${chosenLanguage.journalName}`; 
     // console.log(finalLanguageLabel);
-    onSelectedLangStateChange(finalLanguageLabel); 
+
+    // formatted journal with finalized journal name and key 
+    const journal: Journal = {
+      key: chosenLanguage.key.toString(),
+      journalName: finalLanguageLabel, 
+    };
+
+    // set selected language in parent popup component
+    onSelectedLangStateChange(journal); 
+    // close dropdown
     onDropdownStateChange(false); 
   }
 

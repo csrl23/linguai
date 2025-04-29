@@ -63,14 +63,20 @@
 .journal-container {
   overflow: auto;
   max-height: 370px; 
-  /* border: 1px solid red;  */
+  width: 400px;
+  margin: 0px 0px 0px 23px; 
 }
 
 .journal-container::-webkit-scrollbar {
-  /* display: none; */
-  /* color: rgba(219, 70, 25, 0.93); */
+  width: 4px; 
+  border-radius: 10px; 
+  background-color: rgba(224, 172, 255, 0.29);
 }
 
+.journal-container::-webkit-scrollbar-thumb {
+  background-color: #e2b1ff; 
+  border-radius: 10px; 
+}
 
 /* popup component */
 .new-journal-window {

@@ -6,18 +6,11 @@ import '../styles/journals.css';
 
 const Journals: React.FC = () => {
   const [newJournalWindow, setNewJournalWindow] = useState<boolean>(false); 
-  const [journals, setJournals] = useState<string[]>(['🇫🇷 Français', '🇪🇸 Español', '🇰🇷 한국어', '🇨🇳 普通话', '🇮🇹 Italiano', '🇯🇵 日本語']); 
+  const [journals, setJournals] = useState<string[]>([]); 
 
+//   '🇫🇷 Français', '🇪🇸 Español', '🇰🇷 한국어', '🇨🇳 普通话', '🇮🇹 Italiano', '🇯🇵 日本語'
   useEffect(() => {
-    if(journals) {
-    //   return (
-    //     // <>
-    //     // <div className='new-journal-window'>
-    //     //   <h1>Select a language:</h1>
-    //     // </div>
-    //     // </>
-    //   )
-    }
+    console.log('This is the newly added journal', journals);
   }, [journals])
 
 
@@ -25,14 +18,12 @@ const Journals: React.FC = () => {
     setNewJournalWindow(newState); 
   };
 
-  const createJournal = () => {
-    // return (
-    //   <div className='new-journal-window'>
-    //     <h1>Select a language:</h1>
-    //   </div>
-    // )
+  const handleJournalState = (newState: string[]) => {
+    setJournals(newState); 
   }
 
+  const journalsState = [...journals]; 
+  
   
 
   return (
@@ -53,13 +44,13 @@ const Journals: React.FC = () => {
           <div className='section-list'>
             <ul className='journal-container'>
               {journals.map((journal:string) => (
-                <li className='journal' >
+                <li  className='journal' >
                   {journal}
                 </li>
               ))}
             </ul>
             <button className='add-journal-btn' onClick={() => setNewJournalWindow(true)}>+ New Journal</button>
-            {newJournalWindow && <Popup onPopupStateChange={handlePopupState}></Popup>}
+            {newJournalWindow && <Popup onPopupStateChange={handlePopupState} onJournalStateChange={handleJournalState} journalsState={journalsState}></Popup>}
           </div>
         </section>
       </main>

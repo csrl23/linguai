@@ -7,12 +7,14 @@ import '../styles/journals.css';
 interface ChildProps {
   // prop to update popup state 
   onPopupStateChange: (newState: boolean) => void; 
+  onJournalStateChange: (newState: string[]) => void; 
+  journalsState: string[]; 
 }
 
-const Popup: React.FC<ChildProps> = ({ onPopupStateChange }) => {
+const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange, journalsState }) => {
  
   const [openDropdown, setOpenDropdown] = useState<boolean>(false); 
-  const [selectedLanguage, setSelectedLanguage] = useState<string | undefined>(undefined); 
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(''); 
   const [setLanguage, setSetLanguage] = useState<string>(''); 
   const [noLangChosen, setNoLangChosen] = useState<boolean>(false); 
   const [twoLangChosen, setTwoLangChosen] = useState<boolean>(false); 
@@ -51,7 +53,8 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange }) => {
 
     // check if a language was set or selected. If so, update journals state in parent jounals component
     if (setLanguage || selectedLanguage) {
-
+      const currentJournals = [...journalsState]
+      onJournalStateChange([...currentJournals, setLanguage || selectedLanguage])
       // reset state 
 
       // close popup component

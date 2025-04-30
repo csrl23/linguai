@@ -25,9 +25,10 @@
   align-items: center;
   justify-content: center;
   position: fixed; 
-  top: 10%; 
+  top: 34px; 
   height: 85%; 
   width: 100%; 
+  /* border: 2px solid red;  */
 }
   
 .add-journal-btn, .journal {
@@ -48,7 +49,7 @@
   scale: 1.02; 
 }
 
-.journal {
+.journal, .no-journals {
   background: rgba(224, 172, 255, 0.29);
   display: flex;
   align-items: center;
@@ -60,11 +61,20 @@
   background: rgba(199, 101, 255, 0.29);
 }
 
+.no-journals {
+  color: #848282; 
+}
+
+.no-journals:hover {
+  background: rgba(224, 172, 255, 0.29);
+}
+
 .journal-container {
   overflow: auto;
   max-height: 370px; 
   width: 400px;
   margin: 0px 0px 0px 23px; 
+  /* border: 2px solid blue;  */
 }
 
 .journal-container::-webkit-scrollbar {
@@ -229,4 +239,66 @@
 .dropdown-item:hover {
   background: #F0D6FF;
   border-radius: 6.5px;
+}
+
+/* no lang chosen component */
+.no-lang-chosen-popup {
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  height: 130px; 
+  width: 360px;
+  border: 1px solid #D58DFF; 
+  border-radius: 9px;
+  background: #F0D6FF;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-container {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.message-container {
+  margin: 20px 20px;  
+}
+
+.message {
+  text-align: center;
+  line-height: 23px;
+}
+
+.ok-btn-container {
+  width: 100%;
+  height: 100%;
+}
+
+.ok-btn {
+  bottom: 0;
+  width: 100%; 
+  height: 100%;
+  border-top: 1px solid #D58DFF; 
+  border-bottom: none; 
+  border-right: none; 
+  border-left: none;
+  border-bottom-right-radius: 9px; 
+  border-bottom-left-radius: 9px; 
+  background: #d5c1e043;
+}
+
+.ok-btn:hover {
+  background: #e3b3ff7f;
+}
+
+/* journal exists component */
+.journal-exists-popup {
+  height: 200px; 
+  font-size: 15px;
 }

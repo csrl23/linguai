@@ -14,25 +14,24 @@ const Journals: React.FC = () => {
   const [newJournalWindow, setNewJournalWindow] = useState<boolean>(false); 
   const [journals, setJournals] = useState<Journal[]>([]); 
 
-//   '🇫🇷 Français', '🇪🇸 Español', '🇰🇷 한국어', '🇨🇳 普通话', '🇮🇹 Italiano', '🇯🇵 日本語'
-  useEffect(() => {
-    console.log('This is the newly added journal', journals);
-    console.log(`This is the current journals state ${[...journals]}`);
-  }, [journals])
+//   useEffect(() => {
+//     console.log('This is the newly added journal', journals);
+//     console.log(`This is the current journals state ${[...journals]}`);
+//   }, [journals])
 
-
+  // function to pass popup state setter to child popup component
   const handlePopupState = (newState: boolean) => {
     setNewJournalWindow(newState); 
   };
 
+  // function to pass journals state setter to child popup component
   const handleJournalState = (newState: Journal[]) => {
     setJournals(newState); 
   }
 
+  // function to pass journals state to child popup component 
   const journalsState = [...journals]; 
   
-  
-
   return (
     <div className='dashboard-container'>
       <header className='navbar'>
@@ -49,14 +48,17 @@ const Journals: React.FC = () => {
         <section className='journals-section'>
           <h1 className='section-title'>Journals</h1>
           <div className='section-list'>
-            <ul className='journal-container'>
-              {journals.map((journal:Journal) => (
-                <li key={journal.key} className='journal' >
-                  {journal.journalName}
-                </li>
-              ))}
-            </ul>
-            <button className='add-journal-btn' onClick={() => setNewJournalWindow(true)}>+ New Journal</button>
+            {journals.length === 0 ? 
+              <ul className='journal-container'>
+                <li className='journal no-journals'>No journals available</li>
+              </ul> : 
+              <ul className='journal-container'>
+                {journals.map((journal:Journal) => (
+                <li key={journal.key} className='journal'>{journal.journalName}</li>
+                ))}
+              </ul>
+            }
+            <button className='add-journal-btn' onClick={() => setNewJournalWindow(true)}>+ Add Journal</button>
             {newJournalWindow && <Popup onPopupStateChange={handlePopupState} onJournalStateChange={handleJournalState} journalsState={journalsState}></Popup>}
           </div>
         </section>

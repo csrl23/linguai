@@ -7,19 +7,20 @@ interface ChildProps {
 
 const NoLangChosen: React.FC<ChildProps> = ({ onNoLangStateChange }) => {
 
-//   const [closeError, setCloseError] = useState<boolean>(false); 
-
   const closeErrorPopup = () => {
-    onNoLangStateChange(true); 
+    onNoLangStateChange(false); 
   }
 
   return (
     <>
-      <section className='no-lang-chosen-container'>
-        <div>
-        </div>
-        <div>
-
+      <section className='no-lang-chosen-popup'>
+        <div className='popup-container'> 
+          <div className='message-container'>
+            <p className='message'>Please select or set a language to create a journal</p>
+          </div>
+          <div className='ok-btn-container'>
+            <button className='ok-btn' onClick={closeErrorPopup}>OK</button>
+          </div>
         </div>
       </section>
     </>

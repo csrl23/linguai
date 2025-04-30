@@ -3,6 +3,8 @@ import { nanoid } from 'nanoid';
 import DropdownIcon from '../../assets/DropdownIcon.png'; 
 import LangDropdown from './LanguageDropdown';
 import NoLangChosen from './NoLangChosen'; 
+import TwoLangChosen from './TwoLangChosen'; 
+import JournalExists from './JournalExists'; 
 import '../../styles/journals.css'; 
 
 
@@ -27,6 +29,7 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange,
   const [openDropdown, setOpenDropdown] = useState<boolean>(false); 
   const [selectedLanguage, setSelectedLanguage] = useState<Journal | undefined>(undefined); 
   const [setLanguage, setSetLanguage] = useState<Journal | undefined>(undefined); 
+  const [inputValue, setInputValue] = useState<string>(''); 
   const [noLangChosen, setNoLangChosen] = useState<boolean>(false); 
   const [twoLangChosen, setTwoLangChosen] = useState<boolean>(false); 
   const [journalExists, setJournalExists] = useState<boolean>(false); 
@@ -60,19 +63,38 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange,
     setNoLangChosen(newState); 
   }
 
+  // function to pass two languages chosen error state to child error component
+  const handleTwoLangStateChange = (newState: boolean) => {
+    setTwoLangChosen(newState); 
+  }
+
+  // function to pass two languages chosen error state to child error component
+  const handleJournalExistsStateChange = (newState: boolean) => {
+    setJournalExists(newState); 
+  }
+
   // function to set state of custom journal object  
   const handleSetLang = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // generate unique id for language key 
-    const uniqueId = nanoid(); 
+    // set new input value
+    setInputValue(event.target.value); 
+    
+    // if there is a value in the input field
+    if (event.target.value) {
+      // generate unique id for language key 
+      const uniqueId = nanoid(); 
 
-    // formatted journal with finalized journal name and key 
-    const journal: Journal = {
-      key: uniqueId, 
-      journalName: event.target.value,
-    }; 
+      // formatted journal with finalized journal name and key 
+      const journal: Journal = {
+        key: uniqueId, 
+        journalName: event.target.value,
+      }; 
 
-    // set state of custom language 
-    setSetLanguage(journal); 
+      // set state of custom language 
+      setSetLanguage(journal); 
+    } else {
+      // if there is no value in the input field, set it's state back to an empty string
+      setInputValue(''); 
+    }
   }; 
 
   // function to create journal once language is set or selected from popup
@@ -80,17 +102,20 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange,
     // check if no language was set or selected. If so, change error state to true to display error message
     if (!setLanguage && !selectedLanguage) return setNoLangChosen(true);
 
-    // check if a language was both set and selected. If so, change error state to true to display error message
-    if (setLanguage && selectedLanguage) return setTwoLangChosen(true); 
-
-    // save current journals to a variable 
-    const currentJournals = [...journalsState]; 
-    
+    // check if a language was both set and selected
+    if (setLanguage && selectedLanguage) {
+      // reset state variables back to undefined/empty string
+      setSelectedLanguage(undefined); 
+      setSetLanguage(undefined); 
+      setInputValue(''); 
+      // change error state to true to display error message
+      return setTwoLangChosen(true);
+    } 
 
     // check if a language was set or selected. If so, update journals state in parent jounals component
     if (setLanguage || selectedLanguage) {
       // save current journals to a variable 
-    //   const currentJournals = [...journalsState]; 
+      const currentJournals = [...journalsState]; 
       // save newly chosen language to a variable 
       const journalToAdd = setLanguage || selectedLanguage; 
 
@@ -112,6 +137,8 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange,
         // reset chosen lang state to undefined 
         setSelectedLanguage(undefined); 
         setSetLanguage(undefined); 
+        // reset input value state to empty string 
+        setInputValue(''); 
       }
     }
   };
@@ -141,6 +168,8 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange,
             </button>
             {openDropdown && <LangDropdown onSelectedLangStateChange = {handleSelectedLang} onDropdownStateChange={handleDropdownState}></LangDropdown>}
             {noLangChosen && <NoLangChosen onNoLangStateChange={handleNoLangStateChange}></NoLangChosen>}
+            {twoLangChosen && <TwoLangChosen onTwoLangStateChange={handleTwoLangStateChange}></TwoLangChosen>}
+            {journalExists && <JournalExists onJournalExistsStateChange={handleJournalExistsStateChange}></JournalExists>}
           </div>
           <div className='middle-container'>
             <hr className='middle-line'></hr>
@@ -149,7 +178,7 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange,
           </div>
           <div className='lower-container'>
             <h1 className='lower-h1'>Set your own:</h1>
-            <input className='language-input' type='text' value={setLanguage?.journalName} onChange={(e) => handleSetLang(e)}></input>
+            <input className='language-input' type='text' value={inputValue} onChange={(e) => handleSetLang(e)}></input>
           </div>
         </div>
         <button className='create-journal-btn' onClick={createJournal}>Create Journal</button>

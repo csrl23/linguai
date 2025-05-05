@@ -28,7 +28,6 @@
   top: 34px; 
   height: 85%; 
   width: 100%; 
-  /* border: 2px solid red;  */
 }
   
 .add-journal-btn, .journal {
@@ -74,7 +73,6 @@
   max-height: 370px; 
   width: 400px;
   margin: 0px 0px 0px 23px; 
-  /* border: 2px solid blue;  */
 }
 
 .journal-container::-webkit-scrollbar {
@@ -87,6 +85,7 @@
   background-color: #e2b1ff; 
   border-radius: 10px; 
 }
+
 
 /* popup component */
 .new-journal-window {
@@ -241,6 +240,7 @@
   border-radius: 6.5px;
 }
 
+
 /* no lang chosen component */
 .background-div {
   background: rgba(231, 189, 255, 0.317);
@@ -307,8 +307,100 @@
   background: #e3b3ff7f;
 }
 
+
 /* journal exists component */
 .journal-exists-popup {
   height: 200px; 
   font-size: 15px;
 }
+
+
+/* journal entry */
+.journal-entry-container {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+  height: 100%; 
+  /* border: 4px solid green;  */
+}
+
+.entry-header {
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+  width: 97%;
+  top: 30px;
+  position: fixed;
+  /* border: 2px solid yellow; */
+}
+
+.left-header, .right-header {
+  display: flex; 
+}
+
+.entry-main {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  /* border: 2px solid red;  */
+}
+
+.entry-hr {
+  width: 100%;
+  top: 80px;
+  position: relative;
+  border: 0.5px solid #D181FF;
+}
+
+.entry-main-hr {
+  height: 100%;
+  border: 0.5px solid #D181FF;
+}
+
+.hr-left {
+  position: fixed;
+  left: 70px;
+}
+
+.hr-right {
+  position: fixed;
+  right: 70px;
+}
+
+.journal-entry-components {
+  display: flex; 
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 87.5%;
+  top: 40px;
+  position: relative;
+  /* border: 2px solid blue;  */
+}
+
+.aida-recs-btn {
+  transform: rotate(270deg);
+}
+
+.aida-recs-section, .components-section {
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.aida-recs-section {
+  width: 4.9rem;
+}
+
+.components-section {
+  width: 4.4rem;
+}
+
+.components-btn {
+  transform: rotate(90deg);
+}
+
+

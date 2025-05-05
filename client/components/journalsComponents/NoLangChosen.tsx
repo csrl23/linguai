@@ -12,7 +12,7 @@ const NoLangChosen: React.FC<ChildProps> = ({ onNoLangStateChange }) => {
   }
 
   return (
-    <>
+    <div className='background-div'>
       <section className='no-lang-chosen-popup'>
         <div className='popup-container'> 
           <div className='message-container'>
@@ -23,7 +23,7 @@ const NoLangChosen: React.FC<ChildProps> = ({ onNoLangStateChange }) => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }; 
 

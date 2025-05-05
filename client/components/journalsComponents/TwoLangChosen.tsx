@@ -12,7 +12,7 @@ const TwoLangChosen: React.FC<ChildProps> = ({ onTwoLangStateChange }) => {
   }
 
   return (
-    <>
+    <div className='background-div'>
       <section className='no-lang-chosen-popup'>
         <div className='popup-container'> 
           <div className='message-container'>
@@ -23,7 +23,7 @@ const TwoLangChosen: React.FC<ChildProps> = ({ onTwoLangStateChange }) => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }; 
 

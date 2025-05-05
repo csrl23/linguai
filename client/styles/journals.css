@@ -242,6 +242,16 @@
 }
 
 /* no lang chosen component */
+.background-div {
+  background: rgba(231, 189, 255, 0.317);
+  width: 100vw; 
+  height: 100vh; 
+  top: 47.8%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  position: fixed; 
+}
+
 .no-lang-chosen-popup {
   position: fixed; 
   top: 50%; 

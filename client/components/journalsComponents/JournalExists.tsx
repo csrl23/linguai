@@ -12,7 +12,7 @@ const JournalExists: React.FC<ChildProps> = ({ onJournalExistsStateChange }) => 
   }
 
   return (
-    <>
+    <div className='background-div'>
       <section className='no-lang-chosen-popup journal-exists-popup'>
         <div className='popup-container'> 
           <div className='message-container'>
@@ -23,7 +23,7 @@ const JournalExists: React.FC<ChildProps> = ({ onJournalExistsStateChange }) => 
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }; 
 

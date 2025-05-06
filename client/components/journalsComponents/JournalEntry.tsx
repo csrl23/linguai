@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
 import '../../styles/journals.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 const JournalEntry: React.FC = () => {
 
@@ -10,19 +10,19 @@ const JournalEntry: React.FC = () => {
     <section className='journal-entry-container'>
       <header className='entry-header'>
         <section className='left-header'>
-          <button className='prev-btn'><FontAwesomeIcon icon={faAngleLeft} /></button>
-          <h1 className='date'>Tuesday, <span className='date-month+day'>May 5</span></h1>
+          <button className='prev-btn'><FontAwesomeIcon icon={faAngleLeft} className='arrow-left'/></button>
+          <h1 className='date'>Tuesday, <span className='date-month-day'>May 5</span></h1>
           <button className='chat-aida-btn'>Chat with <span>Ai</span>da</button>
         </section>
         <section className='right-header'>
           <h1 className='journal-name'>🇫🇷 Français</h1>
-          <button className='next-btn'><FontAwesomeIcon icon={faAngleRight} /></button>
+          <button className='next-btn'><FontAwesomeIcon icon={faAngleRight} className='arrow-right'/></button>
         </section>
       </header>
       <hr className='entry-hr'></hr>
       <main className='entry-main'>
         <section className='aida-recs-section'>
-          <button className='aida-recs-btn'><span className='aida-recs-span'>Ai</span>da Recs</button>
+          <button className='aida-recs-btn'><span className='aida-recs-span'>Ai</span>da Recs<span className='space-span'></span><FontAwesomeIcon icon={faAngleDown} /></button>
         </section>
         <hr className='entry-main-hr hr-left'></hr>
         <section className='journal-entry-components'>
@@ -71,7 +71,7 @@ const JournalEntry: React.FC = () => {
         </section>
         <hr className='entry-main-hr hr-right'></hr>
         <section className='components-section'>
-          <button className='components-btn'>Components</button>
+          <button className='components-btn'>Components<span className='space-span'></span><FontAwesomeIcon icon={faAngleDown} /></button>
         </section>
       </main>   
     </section>

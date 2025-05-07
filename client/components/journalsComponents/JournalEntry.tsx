@@ -12,7 +12,7 @@ const JournalEntry: React.FC = () => {
         <section className='left-header'>
           <button className='prev-btn'><FontAwesomeIcon icon={faAngleLeft} className='arrow-left'/></button>
           <h1 className='date'>Tuesday, <span className='date-month-day'>May 5</span></h1>
-          <button className='chat-aida-btn'>Chat with <span>Ai</span>da</button>
+          <button className='chat-aida-btn'>Chat with <span className='chat-span'>Ai</span>da</button>
         </section>
         <section className='right-header'>
           <h1 className='journal-name'>🇫🇷 Français</h1>
@@ -29,16 +29,22 @@ const JournalEntry: React.FC = () => {
           <section className='notes-section'>
             <header className='notes-header'>
               <h2 className='notes-h2'>📓 Notes</h2>
-              <button className='x-comp-btn'>x</button>
+              <section className='corner-btns'> 
+                <button className='resize-comp-btn'>—</button>
+                <button className='x-comp-btn'>x</button>
+              </section>
             </header>
             <main className='notes-main'>
-              <input className='notes-area'></input>
+              <input className='notes-area' type='text'></input>
             </main>
           </section>
           <section className='journal-section'>
             <header className='journal-header'>
               <h2 className='journal-h2'>💌 Journal</h2>
-              <button className='x-comp-btn'>x</button>
+              <section className='corner-btns'> 
+                <button className='resize-comp-btn'>—</button>
+                <button className='x-comp-btn'>x</button>
+              </section>
             </header>
             <main className='journal-main'>
               <input className='journal-area'></input>
@@ -47,7 +53,10 @@ const JournalEntry: React.FC = () => {
           <section className='notes-section'>
             <header className='notes-header'>
               <h2 className='notes-h2'>📓 Notes</h2>
-              <button className='x-comp-btn'>x</button>
+              <section className='corner-btns'> 
+                <button className='resize-comp-btn'>—</button>
+                <button className='x-comp-btn'>x</button>
+              </section>
             </header>
             <main className='notes-main'>
               <input className='notes-area'></input>
@@ -56,18 +65,15 @@ const JournalEntry: React.FC = () => {
           <section className='journal-section'>
             <header className='journal-header'>
               <h2 className='journal-h2'>💌 Journal</h2>
-              <button className='x-comp-btn'>x</button>
+              <section className='corner-btns'> 
+                <button className='resize-comp-btn'>—</button>
+                <button className='x-comp-btn'>x</button>
+              </section>
             </header>
             <main className='journal-main'>
               <input className='journal-area'></input>
             </main>
           </section>
-          {/* <section>
-
-          </section>
-          <section>
-
-          </section> */}
         </section>
         <hr className='entry-main-hr hr-right'></hr>
         <section className='components-section'>

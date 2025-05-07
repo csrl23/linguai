@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from 'react'; 
 import '../../styles/journals.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import Journal from './Journal';
+import Notes from './Notes'; 
 
-const JournalEntry: React.FC = () => {
+
+interface ChildProps {
+  // prop to pass down state of chosen journal 
+  journalChosenState: string | undefined; 
+}
+
+const JournalEntry: React.FC<ChildProps> = ({ journalChosenState }) => {
+
+  const date = new Date(); 
+  const dayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date); 
+  const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date); 
+  const dateString = `${monthName} ${date.getDate()}`; 
 
 
   return (
@@ -11,73 +24,29 @@ const JournalEntry: React.FC = () => {
       <header className='entry-header'>
         <section className='left-header'>
           <button className='prev-btn'><FontAwesomeIcon icon={faAngleLeft} className='arrow-left'/></button>
-          <h1 className='date'>Tuesday, <span className='date-month-day'>May 5</span></h1>
+          <h1 className='date'>{dayName}, <span className='date-month-day'>{dateString}</span></h1>
           <button className='chat-aida-btn'>Chat with <span className='chat-span'>Ai</span>da</button>
         </section>
         <section className='right-header'>
-          <h1 className='journal-name'>🇫🇷 Français</h1>
+          <h1 className='journal-name'>{journalChosenState}</h1>
           <button className='next-btn'><FontAwesomeIcon icon={faAngleRight} className='arrow-right'/></button>
         </section>
       </header>
       <hr className='entry-hr'></hr>
       <main className='entry-main'>
         <section className='aida-recs-section'>
-          <button className='aida-recs-btn'><span className='aida-recs-span'>Ai</span>da Recs<span className='space-span'></span><FontAwesomeIcon icon={faAngleDown} /></button>
+          <button className='aida-recs-btn'><span className='aida-recs-span'>Ai</span>da Recs<span className='space-span'></span><FontAwesomeIcon icon={faAngleDown} className='arrow-down'/></button>
         </section>
         <hr className='entry-main-hr hr-left'></hr>
         <section className='journal-entry-components'>
-          <section className='notes-section'>
-            <header className='notes-header'>
-              <h2 className='notes-h2'>📓 Notes</h2>
-              <section className='corner-btns'> 
-                <button className='resize-comp-btn'>—</button>
-                <button className='x-comp-btn'>x</button>
-              </section>
-            </header>
-            <main className='notes-main'>
-              <input className='notes-area' type='text'></input>
-            </main>
-          </section>
-          <section className='journal-section'>
-            <header className='journal-header'>
-              <h2 className='journal-h2'>💌 Journal</h2>
-              <section className='corner-btns'> 
-                <button className='resize-comp-btn'>—</button>
-                <button className='x-comp-btn'>x</button>
-              </section>
-            </header>
-            <main className='journal-main'>
-              <input className='journal-area'></input>
-            </main>
-          </section>
-          <section className='notes-section'>
-            <header className='notes-header'>
-              <h2 className='notes-h2'>📓 Notes</h2>
-              <section className='corner-btns'> 
-                <button className='resize-comp-btn'>—</button>
-                <button className='x-comp-btn'>x</button>
-              </section>
-            </header>
-            <main className='notes-main'>
-              <input className='notes-area'></input>
-            </main>
-          </section>
-          <section className='journal-section'>
-            <header className='journal-header'>
-              <h2 className='journal-h2'>💌 Journal</h2>
-              <section className='corner-btns'> 
-                <button className='resize-comp-btn'>—</button>
-                <button className='x-comp-btn'>x</button>
-              </section>
-            </header>
-            <main className='journal-main'>
-              <input className='journal-area'></input>
-            </main>
-          </section>
+          <Notes></Notes>
+          <Journal></Journal>
+          <Notes></Notes>
+          <Journal></Journal>
         </section>
         <hr className='entry-main-hr hr-right'></hr>
         <section className='components-section'>
-          <button className='components-btn'>Components<span className='space-span'></span><FontAwesomeIcon icon={faAngleDown} /></button>
+          <button className='components-btn'>Components<span className='space-span'></span><FontAwesomeIcon icon={faAngleDown} className='arrow-down'/></button>
         </section>
       </main>   
     </section>

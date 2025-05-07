@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'; 
-import logo from '../assets/LinguaiLogo.png'; 
 import Popup from './journalsComponents/CreateJournalPopup'; 
 import JournalEntry from './journalsComponents/JournalEntry'; 
 import '../styles/dashboard.css'; 
@@ -15,6 +14,7 @@ const Journals: React.FC = () => {
   const [newJournalWindow, setNewJournalWindow] = useState<boolean>(false); 
   const [journals, setJournals] = useState<Journal[]>([]); 
   const [chosenJournal, setChosenJournal] = useState<string | undefined>(undefined); 
+  const [chosenJournalKey, setChosenJournalKey] = useState<string | undefined>(undefined);
   const [isJournalChosen, setIsJournalChosen] = useState<boolean>(false);
 
 //   useEffect(() => {
@@ -41,51 +41,40 @@ const Journals: React.FC = () => {
     setJournals(newState); 
   }
 
-  // function to pass journals state to child popup component 
+  // variable to pass journals state to child popup component 
   const journalsState = [...journals]; 
 
-  // function to set chosen journal 
+  // function to set chosen journal and journal key
   const handleChosenJournal = (journalName: string, journalKey: string): void => {
     setChosenJournal(journalName); 
+    return setChosenJournalKey(journalKey); 
   }
+
+  // variable to pass journal name state to child journal entry component
+  const chosenJournalName = chosenJournal;
   
   return (
-    <div className='dashboard-container'>
-      <header className='navbar'>
-        <img className='navbar-logo' src={logo} alt='Linguai Logo' style={{height:50, width:180}}></img>
-        <nav className='navbar-links'>
-          <a href=''>Home</a>
-          <a href=''>Journals</a>
-          <a href=''>Calendar</a>
-          <a href=''>Word Bank</a>
-          <a href=''>Account</a>
-        </nav>
-      </header>
-      <main className='dashboard'>
-        {isJournalChosen === true ? <JournalEntry></JournalEntry> :
-          <section className='journals-section'>
-            <h1 className='section-title'>Journals</h1>
-            <div className='section-list'>
-              {journals.length === 0 ? 
-                <ul className='journal-container'>
-                  <li className='journal no-journals'>No journals available</li>
-                </ul> : 
-                <ul className='journal-container'>
-                  {journals.map((journal:Journal) => (
-                  <li key={journal.key} className='journal' onClick={() => handleChosenJournal(journal.journalName, journal.key)}>{journal.journalName}</li>
-                  ))}
-                </ul>
-              }
-              <button className='add-journal-btn' onClick={() => setNewJournalWindow(true)}>+ Add Journal</button>
-              {newJournalWindow && <Popup onPopupStateChange={handlePopupState} onJournalStateChange={handleJournalState} journalsState={journalsState}></Popup>}
-            </div>
-          </section>
-        }
-      </main>
-      <footer className='footer'>
-        <p className='copyright-p'>&copy; 2025 Linguai</p>
-      </footer>
-    </div>
+    <>
+      {isJournalChosen === true ? <JournalEntry journalChosenState={chosenJournalName}></JournalEntry> :
+        <section className='journals-section'>
+          <h1 className='section-title'>Journals</h1>
+          <div className='section-list'>
+            {journals.length === 0 ? 
+            <ul className='journal-container'>
+              <li className='journal no-journals'>No journals available</li>
+            </ul> : 
+            <ul className='journal-container'>
+              {journals.map((journal:Journal) => (
+              <li key={journal.key} className='journal' onClick={() => handleChosenJournal(journal.journalName, journal.key)}>{journal.journalName}</li>
+              ))}
+            </ul>
+            }
+            <button className='add-journal-btn' onClick={() => setNewJournalWindow(true)}>+ Add Journal</button>
+            {newJournalWindow && <Popup onPopupStateChange={handlePopupState} onJournalStateChange={handleJournalState} journalsState={journalsState}></Popup>}
+          </div>
+        </section>
+      }
+    </>
   )
 }
 

@@ -90,10 +90,10 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange,
       }; 
 
       // set state of custom language 
-      setSetLanguage(journal); 
+      return setSetLanguage(journal); 
     } else {
       // if there is no value in the input field, set it's state back to an empty string
-      setInputValue(''); 
+      return setInputValue(''); 
     }
   }; 
 
@@ -138,7 +138,7 @@ const Popup: React.FC<ChildProps> = ({ onPopupStateChange, onJournalStateChange,
         setSelectedLanguage(undefined); 
         setSetLanguage(undefined); 
         // reset input value state to empty string 
-        setInputValue(''); 
+        return setInputValue(''); 
       }
     }
   };

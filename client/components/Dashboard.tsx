@@ -11,11 +11,11 @@ const Dashboard: React.FC = () => {
       <header className='navbar'>
         <img className='navbar-logo' src={logo} alt='Linguai Logo' style={{height:50, width:180}}></img>
         <nav className='navbar-links'>
-          <a href=''>Home</a>
-          <a href=''>Journals</a>
-          <a href=''>Calendar</a>
-          <a href=''>Word Bank</a>
-          <a href=''>Account</a>
+          <a href='/home'>Home</a>
+          <a href='/journals'>Journals</a>
+          <a href='/calendar'>Calendar</a>
+          <a href='/wordbank'>Word Bank</a>
+          <a href='/account'>Account</a>
         </nav>
       </header>
       <main className='dashboard'>

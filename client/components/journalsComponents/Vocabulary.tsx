@@ -29,65 +29,71 @@ const Vocabulary: React.FC = () => {
 
   return (
     <>
-      <section className='journal-section'>
-        <header className='journal-header'>
-          <h2 className='journal-h2'>📝 Vocabulary</h2>
+      <section className='vocab-section'>
+        <header className='vocab-header'>
+          <h2 className='vocab-h2'>📝 Vocabulary</h2>
           <section className='corner-btns'> 
             <button className='resize-comp-btn'>—</button>
             <button className='x-comp-btn'>x</button>
           </section>
         </header>
-        <hr></hr>
-        <main className='journal-main'>
-          <table>
-            <tr>
-              <th>Word</th>
-              <th>Lexical Category</th>
-              <th>Meaning</th>
-              <th></th>
-            </tr>
-            <tr>
-              <td>Amour</td>
-              <td>Verb</td>
-              <td>Love</td>
-              <td>
-                <FontAwesomeIcon icon={faPencil} style={{color: "#626364",}} />
-                <FontAwesomeIcon icon={faTrash} style={{color: "#626364",}} />
-              </td>
-            </tr>
-            <tr>
-              <td>Montagne</td>
-              <td>Noun</td>
-              <td>Mountain</td>
-              <td>
-                <FontAwesomeIcon icon={faPencil} style={{color: "#626364",}} />
-                <FontAwesomeIcon icon={faTrash} style={{color: "#626364",}} />
-              </td>
-            </tr>
-            <tr>
-              <td><input placeholder='Enter word'></input></td>
-              <td>
-                <div>
-                  <h4>{selectedLexCat || 'Select'}</h4>
-                  <div>
-                    <button onClick={() => handleLexCatDropdown()}><FontAwesomeIcon icon={faAngleDown} /></button>
+        <hr className='vocab-hr'></hr>
+        <main className='vocab-main'>
+          <table className='vocab-table'>
+            <thead className='table-head'>
+              <tr className='table-row'>
+                <th className='table-header th-1'>Word</th>
+                <th className='table-header th-2'>Lexical Category</th>
+                <th className='table-header th-3'>Meaning</th>
+                <th className='table-header th-4'></th>
+              </tr>
+            </thead>
+            <tbody className='table-body'>
+              <tr className='table-row'>
+               <td className='table-data td-1'>Amour</td>
+                <td className='table-data td-2'>Verb</td>
+                <td className='table-data td-3'>Love</td>
+                <td className='table-data td-4'>
+                  <FontAwesomeIcon icon={faPencil} style={{fontSize: '10px', color: "#626364",}} />
+                  <FontAwesomeIcon icon={faTrash} style={{fontSize: '10px', color: "#626364",}} />
+                </td>
+              </tr>
+              <tr className='table-row'>
+                <td className='table-data td-1'>Montagne</td>
+                <td className='table-data td-2'>Noun</td>
+                <td className='table-data td-3'>Mountain</td>
+                <td className='table-data td-4'>
+                  <FontAwesomeIcon icon={faPencil} style={{fontSize: '10px', color: "#626364",}} />
+                  <FontAwesomeIcon icon={faTrash} style={{fontSize: '10px', color: "#626364",}} />
+                </td>
+              </tr>
+            {/* <tr className='table-row'>
+              <td className='table-data td-1'><input placeholder='Enter word' className='td-input td-i-1'></input></td>
+              <td className='table-data td-2 '>
+                <div className='td-div'>
+                  <h4 className='td-h4'>{selectedLexCat || 'Select'}</h4>
+                  <div className='td-div-2'>
+                    <button className='td-dropdown-btn' onClick={() => handleLexCatDropdown()}><FontAwesomeIcon icon={faAngleDown} /></button>
                   </div>
                 </div>
                 {openLexCatDropdown && 
-                <div>
-                  <ul>
+                <div className='td-dropdown-container'>
+                  <ul className='td-dropdown'>
                     {lexicalCategories.map((category: string, index: number) => (
-                      <li key={index} className='lex=cat-item' onClick={() => handleSelectedLexCat(category)}>{category}</li>
+                      <li key={index} className='dropdown-item' onClick={() => handleSelectedLexCat(category)}>{category}</li>
                     ))}
                   </ul>
                 </div>
                 }
               </td>
-              <td><input placeholder='Enter meaning'></input></td>
-            </tr>
+              <td className='table-data td-3'><input placeholder='Enter meaning' className='td-input td-i-2'></input></td>
+            </tr> */}
+            </tbody>
           </table>
-
         </main>
+        <div className='btn-div'>
+          <button className='add-entry-btn'>Add Entry</button>
+        </div>
       </section>
     </>
   )

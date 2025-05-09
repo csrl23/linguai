@@ -525,8 +525,8 @@
 }
 
 
-/* journal & notes entry components */
-.notes-section, .journal-section {
+/* journal, notes & vocab entry components */
+.notes-section, .journal-section, .vocab-section {
   width: 49%;
   height: 47%;
   border-radius: 7px;
@@ -537,7 +537,7 @@
   flex-direction: column;
 }
   
-.notes-header, .journal-header {
+.notes-header, .journal-header, .vocab-header {
   display: flex;
   /* border: 1px solid red; */
   align-items: center;
@@ -545,7 +545,7 @@
   margin: 10px 8px 10px 15px;
 }
   
-.notes-h2, .journal-h2 {
+.notes-h2, .journal-h2, .vocab-h2 {
   font-weight: 300;
 }
   
@@ -605,3 +605,99 @@
   /* border: 1px solid red; */
 }
 
+.vocab-hr {
+  border: 0.75px solid #D181FF;
+  margin: 0px 12px;
+}
+
+.vocab-main {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  width: 100%;
+  /* height: 75%; */
+  margin: 0px 0px 14px 0px;
+  /* border: 1px solid red;  */
+}
+
+.vocab-table {
+  /* border: 1px solid blue;  */
+  position: relative;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  width: 91%;
+  height: 100%;
+  
+}
+
+.table-row {
+  /* width: 100%;
+  height: 10px; */
+  height: 10px;
+  border: 1px solid green;
+  white-space: nowrap;
+  text-align: center;
+  /* height: 10px;
+  width: 10px; */
+  /* height: 10px; */
+}
+
+.table-head {
+  height: 40px;
+  border: 1px solid green;
+}
+
+.table-body {
+  /* height: 100%; */
+  border: 1px solid green;
+}
+
+.table-header {
+  /* border: 1px solid yellow; */
+  font-weight: 350;
+  font-size: 17.5px;
+  /* margin: 0px 0px;
+  padding: 0px 0px; */
+  /* height: 10px; */
+}
+
+.table-data {
+  border: 1px solid #D181FF; 
+  background-color: rgba(255, 255, 255, 0.71);
+  border-radius: 7px;
+  font-weight: 350;
+  height: 45px;
+  line-height: 1;
+  /* max-height: 20px; */
+  /* overflow: hidden; */
+}
+
+.td-div {
+  display: flex;
+}
+
+.td-dropdown-container {
+  position: absolute;
+}
+
+.td-4 {
+  display: flex;
+}
+
+.btn-div {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  border: 1px solid yellow;
+  position: absolute;
+  bottom: 15px;
+  height: 40px;
+  width: 100%;
+}
+
+.add-entry-btn {
+  /* position: fixed;
+  bottom: 45px; */
+}

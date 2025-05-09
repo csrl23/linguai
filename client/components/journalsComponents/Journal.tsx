@@ -1,7 +1,7 @@
 import React from 'react'; 
 
 const Journal: React.FC = () => {
-    
+
   return (
     <>
       <section className='journal-section'>
@@ -13,7 +13,7 @@ const Journal: React.FC = () => {
           </section>
         </header>
         <main className='journal-main'>
-          <input className='journal-area'></input>
+          <textarea className='journal-area'></textarea>
         </main>
       </section>
     </>

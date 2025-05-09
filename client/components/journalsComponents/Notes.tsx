@@ -1,7 +1,7 @@
 import React from 'react'; 
 
 const Notes: React.FC = () => {
-    
+
   return (
     <>
       <section className='notes-section'>
@@ -13,7 +13,7 @@ const Notes: React.FC = () => {
           </section>
         </header>
         <main className='notes-main'>
-          <input className='notes-area' type='text'></input>
+          <textarea className='notes-area'></textarea>
         </main>
       </section>
     </>

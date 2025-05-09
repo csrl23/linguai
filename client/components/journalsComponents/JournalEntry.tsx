@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Journal from './Journal';
 import Notes from './Notes'; 
+import Vocabulary from './Vocabulary'; 
 
 
 interface ChildProps {
@@ -41,7 +42,7 @@ const JournalEntry: React.FC<ChildProps> = ({ journalChosenState }) => {
         <section className='journal-entry-components'>
           <Notes></Notes>
           <Journal></Journal>
-          <Notes></Notes>
+          <Vocabulary></Vocabulary>
           <Journal></Journal>
         </section>
         <hr className='entry-main-hr hr-right'></hr>

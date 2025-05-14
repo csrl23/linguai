@@ -30,16 +30,17 @@ const Vocabulary: React.FC = () => {
   return (
     <>
       <section className='vocab-section'>
-        <header className='vocab-header'>
+        <div className='vocab-header'>
           <h2 className='vocab-h2'>📝 Vocabulary</h2>
-          <section className='corner-btns'> 
+          <div className='corner-btns'> 
             <button className='resize-comp-btn'>—</button>
             <button className='x-comp-btn'>x</button>
-          </section>
-        </header>
+          </div>
+        </div>
         <hr className='vocab-hr'></hr>
-        <main className='vocab-main'>
-          <table className='vocab-table'>
+        <div className='vocab-main'>
+          {/* <table className='vocab-table'> */}
+          <table className='header-table'>
             <thead className='table-head'>
               <tr className='table-row'>
                 <th className='table-header th-1'>Word</th>
@@ -48,25 +49,86 @@ const Vocabulary: React.FC = () => {
                 <th className='table-header th-4'></th>
               </tr>
             </thead>
-            <tbody className='table-body'>
-              <tr className='table-row'>
-               <td className='table-data td-1'>Amour</td>
-                <td className='table-data td-2'>Verb</td>
-                <td className='table-data td-3'>Love</td>
-                <td className='table-data td-4'>
-                  <FontAwesomeIcon icon={faPencil} style={{fontSize: '10px', color: "#626364",}} />
-                  <FontAwesomeIcon icon={faTrash} style={{fontSize: '10px', color: "#626364",}} />
-                </td>
-              </tr>
-              <tr className='table-row'>
-                <td className='table-data td-1'>Montagne</td>
-                <td className='table-data td-2'>Noun</td>
-                <td className='table-data td-3'>Mountain</td>
-                <td className='table-data td-4'>
-                  <FontAwesomeIcon icon={faPencil} style={{fontSize: '10px', color: "#626364",}} />
-                  <FontAwesomeIcon icon={faTrash} style={{fontSize: '10px', color: "#626364",}} />
-                </td>
-              </tr>
+          </table>
+          <div className='scroll-body'>
+            <table className='body-table'>
+              <tbody className='table-body'>
+                <tr className='table-row'>
+                  <td className='table-data td-1'>Amour</td>
+                  <td className='table-data td-2'>Verb</td>
+                  <td className='table-data td-3'>Love</td>
+                  <td className='td-4'>
+                    <div className='icons-div'>
+                      <FontAwesomeIcon className='icon' icon={faPencil} />
+                      <FontAwesomeIcon className='icon' icon={faTrash} />
+                    </div>
+                  </td>
+                </tr>
+                <tr className='table-row'>
+                  <td className='table-data td-1'>Montagne</td>
+                  <td className='table-data td-2'>Noun</td>
+                  <td className='table-data td-3'>Mountain</td>
+                  <td className='td-4'>
+                    <div className='icons-div'>
+                      <FontAwesomeIcon className='icon' icon={faPencil} />
+                      <FontAwesomeIcon className='icon' icon={faTrash} />
+                    </div>
+                  </td>
+                </tr>
+                <tr className='table-row'>
+                  <td className='table-data td-1'>Montagne</td>
+                  <td className='table-data td-2'>Noun</td>
+                  <td className='table-data td-3'>Mountain</td>
+                  <td className='td-4'>
+                    <div className='icons-div'>
+                      <FontAwesomeIcon className='icon' icon={faPencil} />
+                      <FontAwesomeIcon className='icon' icon={faTrash} />
+                    </div>
+                  </td>
+                </tr>
+                <tr className='table-row'>
+                  <td className='table-data td-1'>Montagne</td>
+                  <td className='table-data td-2'>Noun</td>
+                  <td className='table-data td-3'>Mountain</td>
+                  <td className='td-4'>
+                    <div className='icons-div'>
+                      <FontAwesomeIcon className='icon' icon={faPencil} />
+                      <FontAwesomeIcon className='icon' icon={faTrash} />
+                    </div>
+                  </td>
+                </tr>
+                <tr className='table-row'>
+                  <td className='table-data td-1'>Montagne</td>
+                  <td className='table-data td-2'>Noun</td>
+                  <td className='table-data td-3'>Mountain</td>
+                  <td className='td-4'>
+                    <div className='icons-div'>
+                      <FontAwesomeIcon className='icon' icon={faPencil} />
+                      <FontAwesomeIcon className='icon' icon={faTrash} />
+                    </div>
+                 </td>
+                </tr>
+                {/* <tr className='table-row'>
+                  <td className='table-data td-1'>Montagne</td>
+                  <td className='table-data td-2'>Noun</td>
+                  <td className='table-data td-3'>Mountain</td>
+                  <td className='td-4'>
+                    <FontAwesomeIcon icon={faPencil} style={{fontSize: '10px', color: "#626364",}} />
+                    <FontAwesomeIcon icon={faTrash} style={{fontSize: '10px', color: "#626364",}} />
+                  </td>
+                </tr>
+                <tr className='table-row'>
+                  <td className='table-data td-1'>Montagne</td>
+                  <td className='table-data td-2'>Noun</td>
+                  <td className='table-data td-3'>Mountain</td>
+                  <td className='td-4'>
+                    <FontAwesomeIcon icon={faPencil} style={{fontSize: '10px', color: "#626364",}} />
+                    <FontAwesomeIcon icon={faTrash} style={{fontSize: '10px', color: "#626364",}} />
+                  </td>
+                </tr> */}
+              </tbody>
+            </table>
+          </div>
             {/* <tr className='table-row'>
               <td className='table-data td-1'><input placeholder='Enter word' className='td-input td-i-1'></input></td>
               <td className='table-data td-2 '>
@@ -88,9 +150,9 @@ const Vocabulary: React.FC = () => {
               </td>
               <td className='table-data td-3'><input placeholder='Enter meaning' className='td-input td-i-2'></input></td>
             </tr> */}
-            </tbody>
-          </table>
-        </main>
+            {/* </tbody>
+          </table> */}
+        </div>
         <div className='btn-div'>
           <button className='add-entry-btn'>Add Entry</button>
         </div>

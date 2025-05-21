@@ -10,11 +10,12 @@ interface VocabEntry {
 }
 
 const Vocabulary: React.FC = () => {
-  const [vocabEntries, setVocabEntries] = useState<VocabEntry[] | undefined>(undefined); 
+  const [vocabEntries, setVocabEntries] = useState<VocabEntry[] | undefined>([{ word: 'Amour', lexCat: 'Noun', meaning: 'Love' }, { word: 'Amour', lexCat: 'Noun', meaning: 'Love' }, { word: 'Amour', lexCat: 'Noun', meaning: 'Love' },]); 
   const [openLexCatDropdown, setOpenLexCatDropdown] = useState<boolean>(false); 
   const [selectedLexCat, setSelectedLexCat] = useState<string | undefined>(undefined); 
 
-  
+  // [{ word: 'Amour', lexCat: 'Noun', meaning: 'Love' }, { word: 'Amour', lexCat: 'Noun', meaning: 'Love' }, { word: 'Amour', lexCat: 'Noun', meaning: 'Love' },]
+
   const lexicalCategories: string[] = ['Noun', 'Verb', 'Adverb', 'Adjective', 'Pronoun', 'Interjection', 'Preposition', 'Conjunction', 'Other']; 
 
   const handleLexCatDropdown = () => {
@@ -50,89 +51,30 @@ const Vocabulary: React.FC = () => {
             </thead>
           </table>
           <div className='scroll-body'>
-            <table className='body-table'>
-              <tbody className='table-body'>
-                <tr className='table-row'>
-                  <td className='table-data td-1'>Amour</td>
-                  <td className='table-data td-2'>Verb</td>
-                  <td className='table-data td-3'>Love</td>
-                  <td className='td-4'>
-                    <div className='icons-div'>
-                      <FontAwesomeIcon className='icon' icon={faPencil} />
-                      <FontAwesomeIcon className='icon' icon={faTrash} />
-                    </div>
-                  </td>
-                </tr>
-                <tr className='table-row'>
-                  <td className='table-data td-1'>Montagne</td>
-                  <td className='table-data td-2'>Noun</td>
-                  <td className='table-data td-3'>Mountain</td>
-                  <td className='td-4'>
-                    <div className='icons-div'>
-                      <FontAwesomeIcon className='icon' icon={faPencil} />
-                      <FontAwesomeIcon className='icon' icon={faTrash} />
-                    </div>
-                  </td>
-                </tr>
-                <tr className='table-row'>
-                  <td className='table-data td-1'>Montagne</td>
-                  <td className='table-data td-2'>Noun</td>
-                  <td className='table-data td-3'>Mountain</td>
-                  <td className='td-4'>
-                    <div className='icons-div'>
-                      <FontAwesomeIcon className='icon' icon={faPencil} />
-                      <FontAwesomeIcon className='icon' icon={faTrash} />
-                    </div>
-                  </td>
-                </tr>
-                <tr className='table-row'>
-                  <td className='table-data td-1'>Montagne</td>
-                  <td className='table-data td-2'>Noun</td>
-                  <td className='table-data td-3'>Mountain</td>
-                  <td className='td-4'>
-                    <div className='icons-div'>
-                      <FontAwesomeIcon className='icon' icon={faPencil} />
-                      <FontAwesomeIcon className='icon' icon={faTrash} />
-                    </div>
-                  </td>
-                </tr>
-                <tr className='table-row'>
-                  <td className='table-data td-1'>Montagne</td>
-                  <td className='table-data td-2'>Noun</td>
-                  <td className='table-data td-3'>Mountain</td>
-                  <td className='td-4'>
-                    <div className='icons-div'>
-                      <FontAwesomeIcon className='icon' icon={faPencil} />
-                      <FontAwesomeIcon className='icon' icon={faTrash} />
-                    </div>
-                 </td>
-                </tr>
-              </tbody>
-            </table>
+            {vocabEntries !== undefined ? 
+              <table className='body-table'>
+                <tbody className='table-body'>
+                  {vocabEntries.map((entry, index) => (
+                    <tr className='table-row'>
+                      <td className='table-data td-1'>{entry.word}</td>
+                      <td className='table-data td-2'>{entry.lexCat}</td>
+                      <td className='table-data td-3'>{entry.meaning}</td>
+                      <td className='td-4'>
+                        <div className='icons-div'>
+                          <FontAwesomeIcon className='icon pencil' icon={faPencil} />
+                          <FontAwesomeIcon className='icon trash' icon={faTrash} />
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              : 
+              <div className='no-entries'>
+                No entries recorded
+              </div>
+            }
           </div>
-            {/* <tr className='table-row'>
-              <td className='table-data td-1'><input placeholder='Enter word' className='td-input td-i-1'></input></td>
-              <td className='table-data td-2 '>
-                <div className='td-div'>
-                  <h4 className='td-h4'>{selectedLexCat || 'Select'}</h4>
-                  <div className='td-div-2'>
-                    <button className='td-dropdown-btn' onClick={() => handleLexCatDropdown()}><FontAwesomeIcon icon={faAngleDown} /></button>
-                  </div>
-                </div>
-                {openLexCatDropdown && 
-                <div className='td-dropdown-container'>
-                  <ul className='td-dropdown'>
-                    {lexicalCategories.map((category: string, index: number) => (
-                      <li key={index} className='dropdown-item' onClick={() => handleSelectedLexCat(category)}>{category}</li>
-                    ))}
-                  </ul>
-                </div>
-                }
-              </td>
-              <td className='table-data td-3'><input placeholder='Enter meaning' className='td-input td-i-2'></input></td>
-            </tr> */}
-            {/* </tbody>
-          </table> */}
           <div className='input-div'>
             {/* <div className='input-container'> */}
             <input placeholder='Enter word' className='td-input td-i-1'></input>
@@ -140,23 +82,21 @@ const Vocabulary: React.FC = () => {
               <h4 className='td-h4'>{selectedLexCat || 'Select'}</h4>
               {/* <div className='td-div-2'> */}
               <button className='td-dropdown-btn' onClick={() => handleLexCatDropdown()}><FontAwesomeIcon icon={faAngleDown} /></button>
-              {/* </div> */}
               {openLexCatDropdown && 
+              <>
                 <div className='td-dropdown-container'>
                   <ul className='td-dropdown'>
                     {lexicalCategories.map((category: string, index: number) => (
-                      <li key={index} className='dropdown-item' onClick={() => handleSelectedLexCat(category)}>{category}</li>
+                      <li key={index} className='td-dropdown-item' onClick={() => handleSelectedLexCat(category)}>{category}</li>
                     ))}
                   </ul>
                 </div>
-                }
+              </>
+              }
             </div>
             <input placeholder='Enter meaning' className='td-input td-i-2'></input>
             <div className='empty-div'></div>
-            {/* </div> */}
           </div>
-
-
         </div>
         <div className='btn-div'>
           <button className='add-entry-btn'>Add Entry</button>

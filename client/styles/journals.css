@@ -123,6 +123,7 @@
   background: #E6BDFE;
   padding: 5px 8px; 
   margin: 0px 0px 11px 0px; 
+  color: #434242;
 }
 
 .create-journal-btn:hover {
@@ -616,7 +617,7 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  height: 72%;
+  min-height: 72%;
   /* border: 1px solid rgb(0, 255, 42);  */
 }
 
@@ -748,7 +749,7 @@
   align-items: center;
   border-collapse: separate;
   border-spacing: 8px 4px;
-  height: 183.5px;
+  max-height: 183.5px;
   width: 97%;
   overflow-y: auto;
   /* border: 1px solid green; */
@@ -820,7 +821,7 @@
   max-height: 150px;
   border: 1px solid #d38efb;
   border-radius: 9px;
-  background: rgb(234, 206, 251);
+  background: rgb(232, 196, 255);
 }
 
 .td-dropdown-item {

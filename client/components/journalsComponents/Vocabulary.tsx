@@ -19,15 +19,16 @@ const Vocabulary: React.FC = () => {
   const [noWordEntered, setNoWordEntered] = useState<boolean>(false); 
   const [noMeaningEntered, setNoMeaningEntered] = useState<boolean>(false); 
   const [newVocabEntry, setNewVocabEntry] = useState<VocabEntry | undefined>(undefined); 
+  const [editRequested, setEditRequested] = useState<boolean>(false); 
+  const [indexToBeEdited, setIndexToBeEdited] = useState<number | undefined>(undefined); 
 
-  // [{ word: 'Amour', lexCat: 'Noun', meaning: 'Love' }, { word: 'Amour', lexCat: 'Noun', meaning: 'Love' }, { word: 'Amour', lexCat: 'Noun', meaning: 'Love' },]
 
   const lexicalCategories: string[] = ['Noun', 'Verb', 'Adverb', 'Adjective', 'Pronoun', 'Interjection', 'Preposition', 'Conjunction', 'Other']; 
 
   const handleLexCatDropdown = () => {
     if (openLexCatDropdown) return setOpenLexCatDropdown(false); 
     else return setOpenLexCatDropdown(true); 
-  }
+  };
 
   const handleSelectedLexCat = (category: string) => {
     setSelectedLexCat(category);
@@ -62,13 +63,13 @@ const Vocabulary: React.FC = () => {
     setWordEntered(''); 
     setSelectedLexCat(undefined); 
     setMeaningEntered(''); 
-  }
+  };
 
   // function to edit a vocab entry 
   const handleVocabEntryEdit = (entryIndex: number): void => {
-
-  
-  }
+    setIndexToBeEdited(entryIndex); 
+    setEditRequested(true); 
+  };
 
   // function to delete a vocab entry 
   const handleVocabEntryDelete = (entryIndex:number): void => {
@@ -78,8 +79,61 @@ const Vocabulary: React.FC = () => {
     
     // set vocab entries state with updated variable 
     setVocabEntries(updatedVocabEntries); 
+  };
+
+  const displayVocabEntries = () => {
+
+    return (
+      vocabEntries.map((entry, index) => (
+        <tr className='table-row' key={index}>
+          <td className='table-data td-1'>{entry.word}</td>
+          <td className='table-data td-2'>{entry.lexCat}</td>
+          <td className='table-data td-3'>{entry.meaning}</td>
+          <td className='td-4'>
+            <div className='icons-div'>
+              <FontAwesomeIcon className='icon pencil' icon={faPencil} onClick={() => handleVocabEntryEdit(index)}/>
+              <FontAwesomeIcon className='icon trash' icon={faTrash} onClick={() => handleVocabEntryDelete(index)}/>
+            </div>
+          </td>
+        </tr>
+      ))
+    )
   }
 
+  const displayEditVocabEntries = () => {
+    return (
+      vocabEntries.map((entry, index) => {
+        if (index === indexToBeEdited) {
+          return (
+            <tr className='table-row' key={index}>
+            <td className='table-data td-1'><input placeholder={wordEntered} className='' type='text' value={wordEntered} onChange={(e) => setWordEntered(e.target.value)}></input></td>
+            <td className='table-data td-2'><input placeholder={selectedLexCat} className='' type='text' value={selectedLexCat} onChange={(e) => setSelectedLexCat(e.target.value)}></input></td>
+            <td className='table-data td-3'><input placeholder={meaningEntered} className='' type='text' value={meaningEntered} onChange={(e) => setMeaningEntered(e.target.value)}></input></td>
+            <td className='td-4'>
+              <div className='icons-div'>
+                <FontAwesomeIcon className='icon pencil' icon={faPencil} onClick={() => handleVocabEntryEdit(index)}/>
+              </div>
+            </td>
+          </tr>
+          )
+        } else {  
+          return (
+            <tr className='table-row' key={index}>
+            <td className='table-data td-1'>{entry.word}</td>
+            <td className='table-data td-2'>{entry.lexCat}</td>
+            <td className='table-data td-3'>{entry.meaning}</td>
+            <td className='td-4'>
+              <div className='icons-div'>
+                <FontAwesomeIcon className='icon pencil' icon={faPencil} onClick={() => handleVocabEntryEdit(index)}/>
+                <FontAwesomeIcon className='icon trash' icon={faTrash} onClick={() => handleVocabEntryDelete(index)}/>
+              </div>
+            </td>
+          </tr>
+          )
+        }
+      })
+    )
+  }
 
   return (
     <>
@@ -107,19 +161,7 @@ const Vocabulary: React.FC = () => {
             {vocabEntries.length > 0 ? 
               <table className='body-table'>
                 <tbody className='table-body'>
-                  {vocabEntries.map((entry, index) => (
-                    <tr className='table-row' key={index}>
-                      <td className='table-data td-1'>{entry.word}</td>
-                      <td className='table-data td-2'>{entry.lexCat}</td>
-                      <td className='table-data td-3'>{entry.meaning}</td>
-                      <td className='td-4'>
-                        <div className='icons-div'>
-                          <FontAwesomeIcon className='icon pencil' icon={faPencil} onClick={() => handleVocabEntryEdit(index)}/>
-                          <FontAwesomeIcon className='icon trash' icon={faTrash} onClick={() => handleVocabEntryDelete(index)}/>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                  {editRequested ? displayEditVocabEntries() : displayVocabEntries()}
                 </tbody>
               </table>
               : 

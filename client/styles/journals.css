@@ -676,11 +676,15 @@
 }
 
 .pencil:hover {
-  color: rgb(210, 202, 47);
+  color: rgb(213, 205, 53);
 }
 
 .trash:hover {
   color: rgba(221, 76, 131, 0.5);
+}
+
+.check:hover {
+  color: rgba(94, 214, 104, 0.695);
 }
 
 .td-input, .td-div {
@@ -730,6 +734,15 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+}
+
+.edit-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 9px;
+  background-color: transparent;
+  text-align: center;
 }
 
 .scroll-body {

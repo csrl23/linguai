@@ -1,6 +1,6 @@
 import React, { useState,  useEffect } from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil, faTrash, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faTrash, faAngleDown, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 // needed when database is created to map through vocab entries 
 interface VocabEntry {
@@ -18,12 +18,21 @@ const Vocabulary: React.FC = () => {
   const [noLexCatSelected, setNoLexCatSelected] = useState<boolean>(false); 
   const [noWordEntered, setNoWordEntered] = useState<boolean>(false); 
   const [noMeaningEntered, setNoMeaningEntered] = useState<boolean>(false); 
+  const [vocabEntryToEdit, setVocabEntryToEdit] = useState<VocabEntry | undefined>(undefined); 
   const [newVocabEntry, setNewVocabEntry] = useState<VocabEntry | undefined>(undefined); 
   const [editRequested, setEditRequested] = useState<boolean>(false); 
   const [indexToBeEdited, setIndexToBeEdited] = useState<number | undefined>(undefined); 
+  const [editedWord, setEditedWord] = useState<string>('');
+  const [editedLexCat, setEditedLexCat] = useState<string>('');
+  const [editedMeaning, setEditedMeaning] = useState<string>('');
 
 
   const lexicalCategories: string[] = ['Noun', 'Verb', 'Adverb', 'Adjective', 'Pronoun', 'Interjection', 'Preposition', 'Conjunction', 'Other']; 
+
+  useEffect (() => {
+    console.log('This is the edited word');
+  }, [editedWord]);
+
 
   const handleLexCatDropdown = () => {
     if (openLexCatDropdown) return setOpenLexCatDropdown(false); 
@@ -69,6 +78,17 @@ const Vocabulary: React.FC = () => {
   const handleVocabEntryEdit = (entryIndex: number): void => {
     setIndexToBeEdited(entryIndex); 
     setEditRequested(true); 
+
+    // const vocabEntry = {
+    //   word: vocabEntries[entryIndex].word, 
+    //   lexCat: vocabEntries[entryIndex].lexCat, 
+    //   meaning: vocabEntries[entryIndex].meaning, 
+    // }
+
+    // setVocabEntryToEdit(vocabEntry); 
+    setEditedWord(vocabEntries[entryIndex].word); 
+    setEditedLexCat(vocabEntries[entryIndex].lexCat); 
+    setEditedMeaning(vocabEntries[entryIndex].meaning); 
   };
 
   // function to delete a vocab entry 
@@ -79,6 +99,18 @@ const Vocabulary: React.FC = () => {
     
     // set vocab entries state with updated variable 
     setVocabEntries(updatedVocabEntries); 
+  };
+
+  const handleEditedVocabEntry = () => {
+    // check if all fields are complete. If not, display user warning
+    if (!editedWord) {
+      
+    }
+
+    // if they are all complete, replace previous vocab entry with newly edited vocab entry 
+
+
+
   };
 
   const displayVocabEntries = () => {
@@ -106,12 +138,12 @@ const Vocabulary: React.FC = () => {
         if (index === indexToBeEdited) {
           return (
             <tr className='table-row' key={index}>
-            <td className='table-data td-1'><input placeholder={wordEntered} className='' type='text' value={wordEntered} onChange={(e) => setWordEntered(e.target.value)}></input></td>
-            <td className='table-data td-2'><input placeholder={selectedLexCat} className='' type='text' value={selectedLexCat} onChange={(e) => setSelectedLexCat(e.target.value)}></input></td>
-            <td className='table-data td-3'><input placeholder={meaningEntered} className='' type='text' value={meaningEntered} onChange={(e) => setMeaningEntered(e.target.value)}></input></td>
+            <td className='table-data td-1'><input className='edit-input' type='text' value={editedWord} onChange={(e) => setEditedWord(e.target.value)}></input></td>
+            <td className='table-data td-2'><input className='edit-input' type='text' value={editedLexCat} onChange={(e) => setEditedLexCat(e.target.value)}></input></td>
+            <td className='table-data td-3'><input className='edit-input' type='text' value={editedMeaning} onChange={(e) => setEditedMeaning(e.target.value)}></input></td>
             <td className='td-4'>
               <div className='icons-div'>
-                <FontAwesomeIcon className='icon pencil' icon={faPencil} onClick={() => handleVocabEntryEdit(index)}/>
+                <FontAwesomeIcon className='icon check' icon={faCircleCheck} onClick={() => handleEditedVocabEntry()}/>
               </div>
             </td>
           </tr>
@@ -161,7 +193,8 @@ const Vocabulary: React.FC = () => {
             {vocabEntries.length > 0 ? 
               <table className='body-table'>
                 <tbody className='table-body'>
-                  {editRequested ? displayEditVocabEntries() : displayVocabEntries()}
+                  {/* {editRequested ? displayEditVocabEntries() : displayVocabEntries()} */}
+                  {displayEditVocabEntries()}
                 </tbody>
               </table>
               : 

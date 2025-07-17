@@ -1,4 +1,4 @@
-import React, { useState,  useEffect } from 'react'; 
+import React, { useState,  useEffect, use } from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrash, faAngleDown, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,18 +20,34 @@ const Vocabulary: React.FC = () => {
   const [noMeaningEntered, setNoMeaningEntered] = useState<boolean>(false); 
   const [vocabEntryToEdit, setVocabEntryToEdit] = useState<VocabEntry | undefined>(undefined); 
   const [newVocabEntry, setNewVocabEntry] = useState<VocabEntry | undefined>(undefined); 
-  const [editRequested, setEditRequested] = useState<boolean>(false); 
+  // const [editRequested, setEditRequested] = useState<boolean>(false); 
   const [indexToBeEdited, setIndexToBeEdited] = useState<number | undefined>(undefined); 
   const [editedWord, setEditedWord] = useState<string>('');
   const [editedLexCat, setEditedLexCat] = useState<string>('');
   const [editedMeaning, setEditedMeaning] = useState<string>('');
+  const [noLexCatEdit, setNoLexCatEdit] = useState<boolean>(false); 
+  const [noWordEdit, setNoWordEdit] = useState<boolean>(false); 
+  const [noMeaningEdit, setNoMeaningEdit] = useState<boolean>(false); 
 
 
   const lexicalCategories: string[] = ['Noun', 'Verb', 'Adverb', 'Adjective', 'Pronoun', 'Interjection', 'Preposition', 'Conjunction', 'Other']; 
 
   useEffect (() => {
-    console.log('This is the edited word');
+    console.log('This is the edited word', editedWord);
   }, [editedWord]);
+
+  useEffect (() => {
+    console.log('This is the edited meaning', editedMeaning);
+  }, [editedMeaning]);
+
+  useEffect (() => {
+    console.log('These are the current vocab entries', vocabEntries);
+  }, [vocabEntries]);
+
+  useEffect (() => {
+    console.log('This is the current index being handled', indexToBeEdited); 
+    console.log('This is the current vocab entry being edited', vocabEntries[indexToBeEdited!]); 
+  }, [indexToBeEdited]); 
 
 
   const handleLexCatDropdown = () => {
@@ -74,18 +90,12 @@ const Vocabulary: React.FC = () => {
     setMeaningEntered(''); 
   };
 
-  // function to edit a vocab entry 
+  // function to begin editing a vocab entry - when edit button is clicked
   const handleVocabEntryEdit = (entryIndex: number): void => {
+    // set the index to be edited 
     setIndexToBeEdited(entryIndex); 
-    setEditRequested(true); 
 
-    // const vocabEntry = {
-    //   word: vocabEntries[entryIndex].word, 
-    //   lexCat: vocabEntries[entryIndex].lexCat, 
-    //   meaning: vocabEntries[entryIndex].meaning, 
-    // }
-
-    // setVocabEntryToEdit(vocabEntry); 
+    // set current state of each property in the selected entry
     setEditedWord(vocabEntries[entryIndex].word); 
     setEditedLexCat(vocabEntries[entryIndex].lexCat); 
     setEditedMeaning(vocabEntries[entryIndex].meaning); 
@@ -101,38 +111,73 @@ const Vocabulary: React.FC = () => {
     setVocabEntries(updatedVocabEntries); 
   };
 
+  // function to handle an edited vocb entry - when complete/check button is clicked 
   const handleEditedVocabEntry = () => {
+    //! create components for warnings
     // check if all fields are complete. If not, display user warning
-    if (!editedWord) {
-      
+    // no word entered
+    if (!editedWord) return setNoWordEdit(true); 
+    // no lex cat selected
+    if (!editedLexCat) return setNoLexCatEdit(true); 
+    // no meaning entered
+    if (!editedMeaning) return setNoMeaningEdit(true); 
+
+    // improper lex cat entered 
+    let matchFound = false; 
+
+    for (let i = 0; i < lexicalCategories.length; i++) {
+      if (lexicalCategories[i] !== editedLexCat) {
+        matchFound = false; 
+      } else {
+        matchFound = true;
+        break;
+      }
     }
 
+    if (!matchFound) return setNoLexCatEdit(true); 
+      
+    // if all fields are valid, initialize a variable to store all fields 
+    const newVocabEntry: VocabEntry = {
+      word: `${editedWord}`, 
+      lexCat: `${editedLexCat}`, 
+      meaning: `${editedMeaning}`, 
+    };
+
     // if they are all complete, replace previous vocab entry with newly edited vocab entry 
+    // copy current vocab entries state and reset state to include edited vocab entry 
+    let vocabEntriesCopy : VocabEntry[] = [...vocabEntries];
+    vocabEntriesCopy[indexToBeEdited!] = newVocabEntry;
 
+    setVocabEntries([...vocabEntriesCopy]); 
 
-
+    // reset all fields to an empty string
+    setEditedWord(''); 
+    setEditedLexCat(''); 
+    setEditedMeaning(''); 
+    setIndexToBeEdited(undefined); 
   };
 
+
+  // const displayVocabEntries = () => {
+
+  //   return (
+  //     vocabEntries.map((entry, index) => (
+  //       <tr className='table-row' key={index}>
+  //         <td className='table-data td-1'>{entry.word}</td>
+  //         <td className='table-data td-2'>{entry.lexCat}</td>
+  //         <td className='table-data td-3'>{entry.meaning}</td>
+  //         <td className='td-4'>
+  //           <div className='icons-div'>
+  //             <FontAwesomeIcon className='icon pencil' icon={faPencil} onClick={() => handleVocabEntryEdit(index)}/>
+  //             <FontAwesomeIcon className='icon trash' icon={faTrash} onClick={() => handleVocabEntryDelete(index)}/>
+  //           </div>
+  //         </td>
+  //       </tr>
+  //     ))
+  //   )
+  // }
+
   const displayVocabEntries = () => {
-
-    return (
-      vocabEntries.map((entry, index) => (
-        <tr className='table-row' key={index}>
-          <td className='table-data td-1'>{entry.word}</td>
-          <td className='table-data td-2'>{entry.lexCat}</td>
-          <td className='table-data td-3'>{entry.meaning}</td>
-          <td className='td-4'>
-            <div className='icons-div'>
-              <FontAwesomeIcon className='icon pencil' icon={faPencil} onClick={() => handleVocabEntryEdit(index)}/>
-              <FontAwesomeIcon className='icon trash' icon={faTrash} onClick={() => handleVocabEntryDelete(index)}/>
-            </div>
-          </td>
-        </tr>
-      ))
-    )
-  }
-
-  const displayEditVocabEntries = () => {
     return (
       vocabEntries.map((entry, index) => {
         if (index === indexToBeEdited) {
@@ -193,8 +238,7 @@ const Vocabulary: React.FC = () => {
             {vocabEntries.length > 0 ? 
               <table className='body-table'>
                 <tbody className='table-body'>
-                  {/* {editRequested ? displayEditVocabEntries() : displayVocabEntries()} */}
-                  {displayEditVocabEntries()}
+                  {displayVocabEntries()}
                 </tbody>
               </table>
               : 

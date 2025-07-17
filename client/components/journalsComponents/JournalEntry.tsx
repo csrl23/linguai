@@ -5,6 +5,7 @@ import { faAngleLeft, faAngleRight, faAngleDown } from '@fortawesome/free-solid-
 import Journal from './Journal';
 import Notes from './Notes'; 
 import Vocabulary from './Vocabulary'; 
+import TinySection from './TinySection'; 
 
 
 interface ChildProps {
@@ -40,8 +41,9 @@ const JournalEntry: React.FC<ChildProps> = ({ journalChosenState }) => {
         </section>
         <hr className='entry-main-hr hr-left'></hr>
         <section className='journal-entry-components'>
+          {/* <Journal></Journal> */}
+          <TinySection></TinySection>
           <Notes></Notes>
-          <Journal></Journal>
           <Vocabulary></Vocabulary>
           <Journal></Journal>
         </section>

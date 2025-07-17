@@ -18,9 +18,6 @@ const Vocabulary: React.FC = () => {
   const [noLexCatSelected, setNoLexCatSelected] = useState<boolean>(false); 
   const [noWordEntered, setNoWordEntered] = useState<boolean>(false); 
   const [noMeaningEntered, setNoMeaningEntered] = useState<boolean>(false); 
-  const [vocabEntryToEdit, setVocabEntryToEdit] = useState<VocabEntry | undefined>(undefined); 
-  const [newVocabEntry, setNewVocabEntry] = useState<VocabEntry | undefined>(undefined); 
-  // const [editRequested, setEditRequested] = useState<boolean>(false); 
   const [indexToBeEdited, setIndexToBeEdited] = useState<number | undefined>(undefined); 
   const [editedWord, setEditedWord] = useState<string>('');
   const [editedLexCat, setEditedLexCat] = useState<string>('');
@@ -32,22 +29,22 @@ const Vocabulary: React.FC = () => {
 
   const lexicalCategories: string[] = ['Noun', 'Verb', 'Adverb', 'Adjective', 'Pronoun', 'Interjection', 'Preposition', 'Conjunction', 'Other']; 
 
-  useEffect (() => {
-    console.log('This is the edited word', editedWord);
-  }, [editedWord]);
+  // useEffect (() => {
+  //   console.log('This is the edited word', editedWord);
+  // }, [editedWord]);
 
-  useEffect (() => {
-    console.log('This is the edited meaning', editedMeaning);
-  }, [editedMeaning]);
+  // useEffect (() => {
+  //   console.log('This is the edited meaning', editedMeaning);
+  // }, [editedMeaning]);
 
-  useEffect (() => {
-    console.log('These are the current vocab entries', vocabEntries);
-  }, [vocabEntries]);
+  // useEffect (() => {
+  //   console.log('These are the current vocab entries', vocabEntries);
+  // }, [vocabEntries]);
 
-  useEffect (() => {
-    console.log('This is the current index being handled', indexToBeEdited); 
-    console.log('This is the current vocab entry being edited', vocabEntries[indexToBeEdited!]); 
-  }, [indexToBeEdited]); 
+  // useEffect (() => {
+  //   console.log('This is the current index being handled', indexToBeEdited); 
+  //   console.log('This is the current vocab entry being edited', vocabEntries[indexToBeEdited!]); 
+  // }, [indexToBeEdited]); 
 
 
   const handleLexCatDropdown = () => {
@@ -147,36 +144,16 @@ const Vocabulary: React.FC = () => {
     // copy current vocab entries state and reset state to include edited vocab entry 
     let vocabEntriesCopy : VocabEntry[] = [...vocabEntries];
     vocabEntriesCopy[indexToBeEdited!] = newVocabEntry;
-
     setVocabEntries([...vocabEntriesCopy]); 
 
-    // reset all fields to an empty string
+    // reset all fields to an empty string and index to be edited to undefined
     setEditedWord(''); 
     setEditedLexCat(''); 
     setEditedMeaning(''); 
     setIndexToBeEdited(undefined); 
   };
 
-
-  // const displayVocabEntries = () => {
-
-  //   return (
-  //     vocabEntries.map((entry, index) => (
-  //       <tr className='table-row' key={index}>
-  //         <td className='table-data td-1'>{entry.word}</td>
-  //         <td className='table-data td-2'>{entry.lexCat}</td>
-  //         <td className='table-data td-3'>{entry.meaning}</td>
-  //         <td className='td-4'>
-  //           <div className='icons-div'>
-  //             <FontAwesomeIcon className='icon pencil' icon={faPencil} onClick={() => handleVocabEntryEdit(index)}/>
-  //             <FontAwesomeIcon className='icon trash' icon={faTrash} onClick={() => handleVocabEntryDelete(index)}/>
-  //           </div>
-  //         </td>
-  //       </tr>
-  //     ))
-  //   )
-  // }
-
+  // function to display all vocab entries based on edit status 
   const displayVocabEntries = () => {
     return (
       vocabEntries.map((entry, index) => {

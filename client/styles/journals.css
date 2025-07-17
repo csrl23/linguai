@@ -528,8 +528,6 @@
 
 /* journal, notes & vocab entry components */
 .notes-section, .journal-section, .vocab-section {
-  width: 49%;
-  height: 47%;
   border-radius: 7px;
   border: 1px solid #D181FF;
   background: rgba(224, 172, 255, 0.22);
@@ -537,8 +535,13 @@
   display: flex; 
   flex-direction: column;
 }
+
+.tiny-section, .notes-section, .journal-section, .vocab-section {
+  width: 49%;
+  height: 47%;
+}
   
-.notes-header, .journal-header, .vocab-header {
+.notes-header, .journal-header, .vocab-header, .timer-header, .quote-header {
   display: flex;
   /* border: 1px solid red; */
   align-items: center;
@@ -546,7 +549,7 @@
   margin: 10px 8px 10px 15px;
 }
   
-.notes-h2, .journal-h2, .vocab-h2 {
+.notes-h2, .journal-h2, .vocab-h2, .timer-h2, .quote-h2 {
   font-weight: 300;
 }
   

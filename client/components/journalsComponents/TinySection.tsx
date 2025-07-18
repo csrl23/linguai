@@ -1,6 +1,6 @@
 import React from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faColonSign } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/tinySection.css';  
 
 const TinySection: React.FC = () => {
@@ -20,6 +20,7 @@ const TinySection: React.FC = () => {
             <main className='timer-main'>
               <div className='timer-div'>
                 <textarea className='hour-area'>00</textarea>
+                <FontAwesomeIcon className='icon-colon' icon={faColonSign}/>
                 <textarea className='min-area'>00</textarea>
                 <textarea className='second-area'>00</textarea>
               </div>

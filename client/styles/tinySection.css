@@ -30,3 +30,17 @@
 .timer-h2, .quote-h2 {
   font-size: 22px;
 }
+
+.timer-main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.timer-div {
+  width: 70%;
+}
+
+.hour-area, .min-area, .second-area {
+  width: 3.45vw;
+  height: 4vh;
+}

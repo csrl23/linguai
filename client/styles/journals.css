@@ -541,7 +541,7 @@
   height: 47%;
 }
   
-.notes-header, .journal-header, .vocab-header, .timer-header, .quote-header {
+.notes-header, .journal-header, .vocab-header {
   display: flex;
   /* border: 1px solid red; */
   align-items: center;
@@ -555,7 +555,8 @@
   
 .corner-btns {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: 3px;
 }
   
 .x-comp-btn, .resize-comp-btn {
@@ -576,7 +577,7 @@
 .resize-comp-btn {
   border: 1px solid rgba(187, 178, 0, 0.63);
   background-color: rgba(255, 246, 78, 0.29);
-  margin: 0px 4px 0px 0px;
+  /* margin: 0px 4px 0px 0px; */
 }
   
 .x-comp-btn:hover {

@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faColonSign } from '@fortawesome/free-solid-svg-icons';
+import colon from '../../assets/colon.jpg'; 
 import '../../styles/tinySection.css';  
 
 const TinySection: React.FC = () => {
@@ -12,17 +13,18 @@ const TinySection: React.FC = () => {
           <section className='timer'>
             <header className='timer-header'>
               <h2 className='timer-h2'>⏳ Timer</h2>
-              <section className='corner-btns'> 
-                <button className='resize-comp-btn'>—</button>
-                <button className='x-comp-btn'>x</button>
+              <section className='corner-btns tiny-corner-btns'> 
+                <button className='resize-comp-btn tiny-resize'>—</button>
+                <button className='x-comp-btn tiny-x'>x</button>
               </section>
             </header>
             <main className='timer-main'>
               <div className='timer-div'>
-                <textarea className='hour-area'>00</textarea>
-                <FontAwesomeIcon className='icon-colon' icon={faColonSign}/>
-                <textarea className='min-area'>00</textarea>
-                <textarea className='second-area'>00</textarea>
+                <textarea className='hour-area' maxLength={2} minLength={2}>00</textarea>
+                <div className='time-colon'>:</div>
+                <textarea className='min-area' maxLength={2}>00</textarea>
+                <div className='time-colon'>:</div>
+                <textarea className='second-area' maxLength={2}>00</textarea>
               </div>
               <div className='start-stop-div'>
                 <div className='start-btn'>
@@ -43,10 +45,15 @@ const TinySection: React.FC = () => {
               </section>
             </header>
             <main className='quote-main'>
-              <div className='play-div'>
-
+              <div className='play-redo-div'>
+                <div className='play-btn'>
+                  <FontAwesomeIcon className='icon-play' icon={faPlay}/>
+                </div>
+                <div className='redo-btn'>
+                  <FontAwesomeIcon className='icon-redo' icon={faPlay}/>
+                </div>
               </div>
-              <div className='start-stop-div'>
+              <div className='quote-div'>
                 {/* //! create function to display generated quote */}
                 Après la pluie, le beau temps
               </div>

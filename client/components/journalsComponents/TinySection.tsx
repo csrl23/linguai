@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faColonSign } from '@fortawesome/free-solid-svg-icons';
-import colon from '../../assets/colon.jpg'; 
+import { faPlay, faPause, faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import volume from '../../assets/Volume.svg'; 
 import '../../styles/tinySection.css';  
 
 const TinySection: React.FC = () => {
@@ -47,10 +47,10 @@ const TinySection: React.FC = () => {
             <main className='quote-main'>
               <div className='play-redo-div'>
                 <div className='play-btn'>
-                  <FontAwesomeIcon className='icon-play' icon={faPlay}/>
+                  <img src={volume} alt='volume icon' style={{height: 22, width: 22}}></img>
                 </div>
                 <div className='redo-btn'>
-                  <FontAwesomeIcon className='icon-redo' icon={faPlay}/>
+                  <FontAwesomeIcon className='icon-redo' icon={faRotateRight}/>
                 </div>
               </div>
               <div className='quote-div'>

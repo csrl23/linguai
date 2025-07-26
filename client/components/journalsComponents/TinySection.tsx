@@ -39,15 +39,15 @@ const TinySection: React.FC = () => {
           <section className='quote-of-the-day'>
             <header className='quote-header'>
               <h2 className='quote-h2'>🪶 Quote of the Day</h2>
-              <section className='corner-btns'> 
-                <button className='resize-comp-btn'>—</button>
-                <button className='x-comp-btn'>x</button>
+              <section className='corner-btns tiny-corner-btns'> 
+                <button className='resize-comp-btn tiny-resize'>—</button>
+                <button className='x-comp-btn tiny-x'>x</button>
               </section>
             </header>
             <main className='quote-main'>
               <div className='play-redo-div'>
                 <div className='play-btn'>
-                  <img src={volume} alt='volume icon' style={{height: 22, width: 22}}></img>
+                  <FontAwesomeIcon className='icon-start' icon={faPlay}/>
                 </div>
                 <div className='redo-btn'>
                   <FontAwesomeIcon className='icon-redo' icon={faRotateRight}/>

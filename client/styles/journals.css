@@ -388,7 +388,7 @@
   top: 35px;
   position: relative;
   /* border: 2px solid blue;  */
-  padding: 0px 23px;
+  padding: 0px 10px;
 }
 
 .aida-recs-btn, .components-btn {
@@ -537,8 +537,8 @@
 }
 
 .tiny-section, .notes-section, .journal-section, .vocab-section {
-  width: 49%;
-  height: 47%;
+  width: 49.55%;
+  height: 48.5%;
 }
   
 .notes-header, .journal-header, .vocab-header {
@@ -549,7 +549,7 @@
   margin: 10px 8px 10px 15px;
 }
   
-.notes-h2, .journal-h2, .vocab-h2, .timer-h2, .quote-h2 {
+.notes-h2, .journal-h2, .vocab-h2, .timer-h2, .quote-h2, .podcast-h2 {
   font-weight: 300;
 }
   

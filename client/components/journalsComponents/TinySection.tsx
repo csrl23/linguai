@@ -1,6 +1,6 @@
 import React from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faRotateRight, faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 import volume from '../../assets/Volume.svg'; 
 import '../../styles/tinySection.css';  
 
@@ -63,7 +63,37 @@ const TinySection: React.FC = () => {
         <div className='lower-tiny-section'>
           <div className='left-lower-section'>
             <section className='podcast'>
-            
+              <header className='podcast-header'>
+                <h2 className='podcast-h2'>🎙️ Podcast</h2>
+                <section className='corner-btns tiny-corner-btns'> 
+                  <button className='resize-comp-btn tiny-resize'>—</button>
+                  <button className='x-comp-btn tiny-x'>x</button>
+                </section>
+              </header>
+              <main className='podcast-main'>
+                <div className='podcast-div'>
+                  <div className='podcast-image-div'>
+                    <button className='podcast-image-btn'>
+                      <img className='podcast-img' src='https://img.lemde.fr/2021/03/23/0/0/3000/3000/1112/0/75/0/3e006b9_1616516956189-vignette-podcast-lheuredumonde-sansspotify.png' ></img>
+                    </button>
+                  </div>
+                  <div className='podcast-details'>
+                    <section><strong>L'Heure du Monde</strong></section>
+                    <section>Le Monde</section>
+                    <div className='prev-play-next-div'>
+                      <div className='prev-btn'>
+                        <FontAwesomeIcon className='icon-prev' icon={faBackward}/>
+                      </div>
+                      <div className='play-btn'>
+                        <FontAwesomeIcon className='icon-play' icon={faPlay}/>
+                      </div>
+                      <div className='next-btn'>
+                        <FontAwesomeIcon className='icon-next' icon={faForward}/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </main>
             </section>
             <section className='music'>
 

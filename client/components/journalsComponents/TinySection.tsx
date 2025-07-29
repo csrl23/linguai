@@ -81,13 +81,13 @@ const TinySection: React.FC = () => {
                     <section><strong>L'Heure du Monde</strong></section>
                     <section>Le Monde</section>
                     <div className='prev-play-next-div'>
-                      <div className='prev-btn'>
+                      <div className='prev-pod-btn'>
                         <FontAwesomeIcon className='icon-prev' icon={faBackward}/>
                       </div>
-                      <div className='play-btn'>
+                      <div className='play-pod-btn'>
                         <FontAwesomeIcon className='icon-play' icon={faPlay}/>
                       </div>
-                      <div className='next-btn'>
+                      <div className='next-pod-btn'>
                         <FontAwesomeIcon className='icon-next' icon={faForward}/>
                       </div>
                     </div>
